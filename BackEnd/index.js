@@ -39,7 +39,7 @@ app.use("/balance", balanceRoutes);
 app.use("/transaction", transactionRoutes);
 app.use("/user", userRoutes);
 app.get("/", (req, res) => {
-  res.json({ ok: true, message: "Backend is running" });
+  res.send(`Hello`);
 });
 
 app.listen(Port, () => {
