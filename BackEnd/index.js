@@ -38,6 +38,10 @@ app.use("/auth", authRoutes);
 app.use("/balance", balanceRoutes);
 app.use("/transaction", transactionRoutes);
 app.use("/user", userRoutes);
+app.get("/", (req, res) => {
+  res.json({ ok: true, message: "Backend is running" });
+});
+
 app.listen(Port, () => {
   console.log(`Server is running at Port: ${Port}`);
 });
