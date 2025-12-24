@@ -18,7 +18,7 @@ export const Register = async (req, res) => {
       });
     if (!regexPassword.test(password))
       return res.status(400).json({
-        message: `Password must be 8 characters long and have number and special character`,
+        message: `Password must be 8 characters long and have number,capital letter and special character`,
       });
 
     const hashedPassword = await bcrypt.hash(password, 10);
