@@ -68,12 +68,13 @@ export const login = async (req, res) => {
       { expiresIn: rememberMe ? "30d" : "3h" } // longer expiry if rememberMe
     );
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000, // 30 days vs 3 hours
-    });
+ res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,        // required for HTTPS in production
+  sameSite: "none",    // allow cross-site cookies
+  maxAge: rememberMe ? 30 * 24 * 60 * 60 * 1000 : 3 * 60 * 60 * 1000,
+});
+
 
     return res
       .status(200)
